@@ -4,10 +4,14 @@ import CardList from './Components/CardList/CardList';
 import Search from './Components/Search/Search';
 import { CompanySearch } from './company';
 import { searchCompanies } from './api';
+import ListPortfolio from './Components/Portfolio/ListPortfolio/ListPortfolio';
+import Navbar from './Navbar/Navbar';
+import Hero from './Hero/Hero';
 
 function App() 
 {
   const [search, setSearch] = useState<string>("");
+  const [portfolioValues, setPortfolioValues] = useState<string[]>([]);
   const [searchResult, setSearchResult] = useState<CompanySearch[]>([]);
   const [serverError, setServerError] = useState<string>("");
   
@@ -17,10 +21,13 @@ function App()
     console.log(e);
   };
 
-  const onPortfolioCreate = (e: SyntheticEvent)=>
+  const onPortfolioCreate = (e: any)=>
   {
     e.preventDefault();
-    console.log(e);
+    const exists = portfolioValues.find((value) => value === e.target[0].value);
+    if(exists) return;
+    const updatedPortfolio = [...portfolioValues, e.target[0].value];
+    setPortfolioValues(updatedPortfolio);
   }
 
   const onSearchSubmit = async (e: SyntheticEvent) => 
@@ -37,11 +44,23 @@ function App()
     
     console.log(searchResult);
   };
+
+  const onPortfolioDelete = (e : any) => {
+    e.preventDefault();
+    const removed = portfolioValues.filter((value) => {
+      return value !== e.target[0].value;
+    })
+
+    setPortfolioValues(removed);
+  }
   
   return (
     <div className="App">
+      <Navbar/>
+      <Hero />
       <Search onSearchSubmit={onSearchSubmit} handleSearchChange={handleSearchChange} search={search}/>
       {serverError && <h1>{serverError}</h1>}
+      <ListPortfolio portfolioValues={portfolioValues} onPortfolioDelete={onPortfolioDelete}/>
       <CardList searchResults={searchResult} onPortfolioCreate={onPortfolioCreate}/>
     </div>
   );
