@@ -1,5 +1,5 @@
 import axios from "axios"
-import { CompanyIncomeStatement, CompanyKeyMetrics, CompanyProfile, CompanySearch } from "./company";
+import { CompanyBalanceSheet, CompanyIncomeStatement, CompanyKeyMetrics, CompanyProfile, CompanySearch } from "./company";
 
 interface SearchResponse {
     data: CompanySearch[];
@@ -59,6 +59,19 @@ export const getIncomeStatement = async (query: string) => {
         return data;
     }
     catch (error: any) {
-        console.log("Error message from getKeyMetrics: ", error.message)
+        console.log("Error message from getIncomeStatement: ", error.message)
+    }
+}
+
+export const getBalanceSheet = async (query: string) => {
+    try {
+        const data = await axios.get<CompanyBalanceSheet[]>
+            (
+                `https://financialmodelingprep.com/api/v3/balance-sheet-statement/${query}?period=annual&apikey=YLPabTkG7dvhFLFs7tyZU5c5ypWAXe6R`
+            )
+        return data;
+    }
+    catch (error: any) {
+        console.log("Error message from getBalanceSheet: ", error.message)
     }
 }
