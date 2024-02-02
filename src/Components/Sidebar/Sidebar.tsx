@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaHome } from "react-icons/fa";
+import { FaBuysellads, FaCashRegister, FaHome, FaInfoCircle, FaMoneyBill, FaMoneyCheck } from "react-icons/fa";
 
 interface Props {
 
@@ -16,16 +16,20 @@ const Sidebar = (props: Props) => {
                 <div className="flex bg-white flex-col items-stretch opacity-100 relative mt-4 overflow-y-auto overflow-x-hidden h-auto z-40 items-center flex-1 rounded w-full">
                     <div className="md:flex-col md:min-w-full flex flex-col list-none">
                         <Link to="company-profile" className="flex md:min-w-full text-blueGray-50 text-medium uppercase font-bold block pt--1 pb-4 no-underline">
-                            <FaHome />
+                            <FaInfoCircle />
                             <h6 className='ml-3'>Company Profile</h6>
                         </Link>
                         <Link to="income-statement" className="flex md:min-w-full text-blueGray-50 text-medium uppercase font-bold block pt--1 pb-4 no-underline">
-                            <FaHome />
+                            <FaMoneyBill />
                             <h6 className='ml-3'>Income State</h6>
                         </Link>
                         <Link to="balance-sheet" className="flex md:min-w-full text-blueGray-50 text-medium uppercase font-bold block pt--1 pb-4 no-underline">
-                            <FaHome />
+                            <FaMoneyCheck />
                             <h6 className='ml-3'>Balance Sheet</h6>
+                        </Link>
+                        <Link to="cashflow-statement" className="flex md:min-w-full text-blueGray-50 text-medium uppercase font-bold block pt--1 pb-4 no-underline">
+                            <FaBuysellads />
+                            <h6 className='ml-3'>CashFlow Statement</h6>
                         </Link>
                     </div>
                 </div>

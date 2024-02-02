@@ -58,7 +58,6 @@ const SearchPage = (props: Props) => {
 
   return (
     <div className="App">
-      <Hero />
       <Search onSearchSubmit={onSearchSubmit} handleSearchChange={handleSearchChange} search={search}/>
       {serverError && <h1>{serverError}</h1>}
       <ListPortfolio portfolioValues={portfolioValues} onPortfolioDelete={onPortfolioDelete}/>
