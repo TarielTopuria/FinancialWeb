@@ -62,7 +62,7 @@ const SearchPage = (props: Props) => {
       {serverError && <h1>{serverError}</h1>}
       <ListPortfolio portfolioValues={portfolioValues} onPortfolioDelete={onPortfolioDelete}/>
       <CardList searchResults={searchResult} onPortfolioCreate={onPortfolioCreate}/>
-      {serverError && <div>Unable to connetc to API</div>}
+      {serverError && <div>Unable to connect to API</div>}
     </div>
   )
 }
